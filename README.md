@@ -1,3 +1,2 @@
-# nlp-spacer
-
 # NLP-Scraper
+A beginner-friendly NLP pipeline for social media sentiment analysis using classical machine learning techniques. This project demonstrates text preprocessing, feature engineering with the Bag-of-Words model, and dataset preparation for sentiment classification.
