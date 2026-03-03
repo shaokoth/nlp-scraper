@@ -78,3 +78,11 @@ def classify_sentiment(score):
         return "Negative"
     else:
         return "Neutral"
+# ------------------------------------------------------------
+# PLOTS
+# ------------------------------------------------------------
+def configure_date_axis():
+    """Format dates for 7-day reports."""
+    plt.gca().xaxis.set_major_locator(mdates.DayLocator())
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%b %d"))
+    plt.xticks(rotation=45, ha="right")
