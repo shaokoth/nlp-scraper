@@ -183,3 +183,27 @@ def plot_sentiment_per_company(df, output="results/img/sentiment_per_company.png
     plt.savefig(output, dpi=300)
     plt.close()
     print(f"Saved: {output}")
+
+def plot_topic_distribution(df, output="results/img/topic_distribution.png"):
+    exploded = df.explode("topics")
+    counts = exploded["topics"].value_counts()
+
+    plt.figure()
+    wedges, text, autotexts = plt.pie(
+        counts,
+        labels=counts.index,
+        autopct="%1.1f%%",
+        pctdistance=0.8,
+        startangle=140,
+        colors=plt.cm.Paired.colors,
+        wedgeprops={"linewidth": 1, "edgecolor": "white"},
+    )
+
+    # Convert to donut
+    plt.gca().add_artist(plt.Circle((0, 0), 0.5, color="white"))
+
+    plt.title("Overall Topic Distribution")
+    plt.tight_layout()
+    plt.savefig(output, dpi=300)
+    plt.close()
+    print(f"Saved: {output}")
