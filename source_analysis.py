@@ -100,3 +100,18 @@ def plot_articles_per_day(df, output="results/img/articles_per_day.png"):
     plt.savefig(output, dpi=300)
     plt.close()
     print(f"Saved: {output}")
+
+def plot_topics_per_day(df, output="results/img/topics_per_day.png"):
+    exploded = df.explode("topics")
+    pivot = exploded.groupby(["day", "topics"]).size().unstack(fill_value=0)
+
+    plt.figure()
+    pivot.plot(kind="bar", stacked=True, colormap="tab20")
+    plt.title("Topic Distribution Per Day")
+    plt.xlabel("Date")
+    plt.ylabel("Number of Articles")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(output, dpi=300)
+    plt.close()
+    print(f"Saved: {output}")
